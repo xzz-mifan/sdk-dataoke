@@ -3,13 +3,22 @@
 namespace DTK\client;
 
 use DTK\Client;
-use DTK\request\save\GoodsListReq;
+use DTK\request\Request;
 
+/**
+ * 入库更新API
+ * Class Save
+ * @package DTK\client
+ *
+ * @method Save getGoodsList(Request $request)
+ */
 class Save extends Client
 {
 
-    public function getGoodsList(GoodsListReq $goodsListReq)
+    public function __call($name, $arguments)
     {
-
+        $request = $arguments[0];
+        return $this->run($request);
     }
+
 }

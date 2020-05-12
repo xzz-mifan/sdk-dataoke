@@ -2,6 +2,10 @@
 
 namespace DTK;
 
+use DTK\extend\Error;
+use DTK\extend\Http;
+use DTK\request\Request;
+
 /**
  * 请求客户端
  * Class Client
@@ -46,5 +50,28 @@ class Client
     {
         $class_name = __NAMESPACE__ . "\\" . $name;
         return new $class_name($arguments);
+    }
+
+    protected function run(Request $request)
+    {
+        /* 二次校验 */
+        $params = $request->getParams();
+        if ($params === false) {
+            $request->getError();
+        }
+
+        $data['appKey']  = $this->_appKey;
+        $data['version'] = $request->getVersion();
+        $data['sign']    = $request->makeSign($data, $this->_appSecret);
+        $result          = Http::get($request->getAddress(), $data);
+
+        $data = json_decode($result, true);
+
+        if (!$data || !isset($data['code'])) throw new \Exception(Error::$error['-100'], -100);
+
+
+        if ($data['code'] != 0) throw new \Exception(Error::$error[$data['code']], $data['code']);
+
+        return $data['data'];
     }
 }
