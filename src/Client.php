@@ -2,6 +2,8 @@
 
 namespace DTK;
 
+use DTK\extend\Cache;
+use DTK\extend\Config;
 use DTK\extend\Error;
 use DTK\extend\Http;
 use DTK\request\Request;
@@ -24,6 +26,10 @@ class Client
     public function __construct($appKey = '', $appSecret = '')
     {
         /* 此处可以设置默认值 方便调用 */
+        if (!$appKey || !$appSecret) {
+            $appKey    = Config::get('appKey');
+            $appSecret = Config::get('appSecret');
+        }
         $this->_appKey    = $appKey;
         $this->_appSecret = $appSecret;
     }
@@ -60,10 +66,18 @@ class Client
             $request->getError();
         }
 
+        /* 拼接参数 */
         $data['appKey']  = $this->_appKey;
         $data['version'] = $request->getVersion();
+        $data            = array_merge($data, $params);
         $data['sign']    = $request->makeSign($data, $this->_appSecret);
-        $result          = Http::get($request->getAddress(), $data);
+
+        /* 缓存键 */
+        $cacheKey = $request->getVersion() . ":" . md5($request->getAddress() . implode(',', $params));
+        $result   = Cache::get($cacheKey);
+        if ($result) return $result;
+
+        $result = Http::get($request->getAddress(), $data);
 
         $data = json_decode($result, true);
 
@@ -71,6 +85,8 @@ class Client
 
 
         if ($data['code'] != 0) throw new \Exception(Error::$error[$data['code']], $data['code']);
+
+        Cache::set($cacheKey, $data['data'], Config::get('cachetime'));
 
         return $data['data'];
     }
