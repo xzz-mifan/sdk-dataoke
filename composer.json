@@ -12,7 +12,7 @@
   "require": {
     "ext-curl": "*",
     "ext-json": "*",
-    "divineomega/do-file-cache": "^2.0"
+    "ext-zlib": "*"
   },
   "autoload": {
     "psr-4": {

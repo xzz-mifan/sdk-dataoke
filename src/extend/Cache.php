@@ -3,7 +3,8 @@
 
 namespace DTK\extend;
 
-use DivineOmega\DOFileCache\DOFileCache;
+
+use DTK\vendor\cache\DOFileCache;
 
 /**
  * 缓存
