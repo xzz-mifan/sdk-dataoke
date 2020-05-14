@@ -2,6 +2,7 @@
 
 namespace DTK;
 
+use DTK\client\Save;
 use DTK\extend\Cache;
 use DTK\extend\Config;
 use DTK\extend\Error;
@@ -12,6 +13,8 @@ use DTK\request\Request;
  * 请求客户端
  * Class Client
  * @package DTK
+ *
+ * @method Save getGoodsList(Request $request) 商品列表
  */
 class Client
 {
@@ -54,17 +57,20 @@ class Client
      */
     public function __call($name, $arguments)
     {
-        $class_name = __NAMESPACE__ . "\\" . $name;
+
+        $class_name_array = explode("\\", __CLASS__);
+        $class_name       = strtolower($class_name_array[1]);
+        $class_name       = __NAMESPACE__ . "\\" . $class_name . "\\" . $arguments[0]->affiliation;
+        $class            = new $class_name($arguments);
+        return call_user_method($name,$class);
         return new $class_name($arguments);
     }
 
     protected function run(Request $request)
     {
-        /* 二次校验 */
+
         $params = $request->getParams();
-        if ($params === false) {
-            $request->getError();
-        }
+        if ($params === false) throw new \Exception($request->getError());
 
         /* 拼接参数 */
         $data['appKey']  = $this->_appKey;
@@ -86,7 +92,7 @@ class Client
 
         if ($data['code'] != 0) throw new \Exception(Error::$error[$data['code']], $data['code']);
 
-        Cache::set($cacheKey, $data['data'], Config::get('cachetime'));
+        Cache::set($cacheKey, $data['data'], $request->getCacheTime());
 
         return $data['data'];
     }

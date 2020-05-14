@@ -10,7 +10,7 @@ use DTK\request\Request;
  * Class Save
  * @package DTK\client
  *
- * @method Save getGoodsList(Request $request)
+ * @method Save getGoodsList(Request $request) 商品列表
  */
 class Save extends Client
 {

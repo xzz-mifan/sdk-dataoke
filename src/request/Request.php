@@ -3,15 +3,24 @@
 namespace DTK\request;
 
 
+use DTK\extend\Config;
+
 class Request
 {
+    /* 请求地址 */
     protected $address;
 
+    /* 需要检测的必填字段 */
     protected $checkParams = [];
 
     protected $version = 'v1.2.2';
 
     private $error = '';
+
+    /* 缓存时间 (秒)*/
+    protected $cacheTime = null;
+
+    public $affiliation = 'save';
 
     /**
      * 获取当前API版本
@@ -41,6 +50,12 @@ class Request
      */
     public function getParams()
     {
+
+        if (count($this->params) == 0 && count($this->checkParams) > 0) {
+            $this->error = "必填参数不能为空:" . implode(',', $this->checkParams);
+            return false;
+        }
+
         foreach ($this->params as $index => $param) {
             if (stripos($index, 'set') === 0) {
                 $req_index                = lcfirst(substr($index, 3));
@@ -99,5 +114,24 @@ class Request
         }
         $str = trim($str, '&');
         return strtoupper(md5($str . '&key=' . $appSecret));
+    }
+
+    /**
+     * @return null
+     */
+    public function getCacheTime()
+    {
+        if ($this->cacheTime == null || !$this->cacheTime) $this->cacheTime = Config::get('cachetime');
+        return $this->cacheTime;
+    }
+
+    /**
+     * @param $cacheTime
+     * @return $this
+     */
+    public function setCacheTime($cacheTime)
+    {
+        $this->cacheTime = $cacheTime;
+        return $this;
     }
 }

@@ -36,6 +36,8 @@ class GoodsListReq extends Request
 
     protected $checkParams = ['pageId'];
 
+    protected $cacheTime = 3600;
+
 
     public function __call($name, $arguments)
     {

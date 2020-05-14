@@ -3,8 +3,13 @@
 
 include "../vendor/autoload.php";
 
+/* 入库更新API-商品列表 */
 $goodsListReq = new DTK\request\save\GoodsListReq();
-$result = DTK\client\Save::static()
-    ->getGoodsList($goodsListReq);
-var_dump($result);
+$goodsListReq->setPageId(1);
+//$result = DTK\client\Save::static()->getGoodsList($goodsListReq);
+//var_dump($result);
 
+$client = new \DTK\Client();
+$result =$client->getGoodsList($goodsListReq);
+
+var_dump($result);
