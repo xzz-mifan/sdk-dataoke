@@ -1,15 +1,21 @@
 {
-  "name": "vendor_name/dataoke",
-  "description": "description",
+  "name": "xzz-mifan/dataoke",
+  "type": "library",
+  "description": "快速优雅的大淘客SDK,从未如此无与伦比\n\nThe fast and elegant Dataoke SDK has never been so unbeatable\n\n一个用于大淘客API调用的优秀SDK\n\nAn excellent SDK for API calls of Dataoke",
+  "keywords": ["大淘客","dataoke","dtk","sdk"],
+  "homepage": "https://github.com/xzz-mifan/sdk-dataoke",
+  "license": "MIT",
   "minimum-stability": "stable",
-  "license": "proprietary",
   "authors": [
     {
-      "name": "Administrator",
-      "email": "email@example.com"
+      "name": "徐壮壮",
+      "email": "867342143@qq.com",
+      "homepage": "https://github.com/xzz-mifan",
+      "role": "Developer"
     }
   ],
   "require": {
+    "php": ">=7.*",
     "ext-curl": "*",
     "ext-json": "*",
     "ext-zlib": "*"
