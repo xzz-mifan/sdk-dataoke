@@ -2,20 +2,16 @@
 
 namespace DTK;
 
-use DTK\client\Save;
 use DTK\extend\Cache;
 use DTK\extend\Config;
 use DTK\extend\Error;
 use DTK\extend\Http;
 use DTK\request\Request;
-use DTK\request\save\GoodsListReq;
 
 /**
  * 请求客户端
  * Class Client
  * @package DTK
- *
- * @method Save getGoodsList(GoodsListReq $request) 入库更新API->商品列表
  */
 class Client
 {
@@ -85,8 +81,7 @@ class Client
 
         if (!$data || !isset($data['code'])) throw new \Exception(Error::$error['-100'], -100);
 
-
-        if ($data['code'] != 0) throw new \Exception(Error::$error[$data['code']], $data['code']);
+        if ($data['code'] != 0) throw new \Exception(Error::$error[$data['code']] ?? $data['msg'] . "[{$request->affiliation}]", $data['code']);
 
         Cache::set($cacheKey, $data['data'], $request->getCacheTime());
 

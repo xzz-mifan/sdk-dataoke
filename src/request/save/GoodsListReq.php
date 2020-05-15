@@ -36,6 +36,8 @@ class GoodsListReq extends Request
 
     protected $address = "goods/get-goods-list";
 
+    protected $version = "v1.2.2";
+
     protected $checkParams = ['pageId'];
 
     protected $cacheTime = 3600;

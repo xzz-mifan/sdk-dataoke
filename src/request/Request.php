@@ -74,11 +74,13 @@ class Request
                 $req_index                = lcfirst(substr($index, 3));
                 $this->params[$req_index] = $this->params[$index];
                 unset($this->params[$index]);
+            }
+        }
 
-                if (!in_array($req_index, $this->checkParams)) {
-                    $this->error = "必填参数不能为空:" . implode(',', $this->checkParams);
-                    return false;
-                }
+        foreach ($this->checkParams as $param) {
+            if (!isset($this->params[$param]) || !$this->params[$param]) {
+                $this->error = "必填参数不能为空:" . $param;
+                return false;
             }
         }
         return $this->params;
