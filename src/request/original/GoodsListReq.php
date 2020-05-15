@@ -4,25 +4,25 @@ namespace DTK\request\original;
 
 use DTK\request\Request;
 
+
 /**
- * 官方活动推广
- * Class TbTopicListReq
+ * 专辑商品
+ * Class GoodsListReq
  * @package DTK\request\original
  *
  * @method  setPageId(String $value) 分页id，支持传统的页码分页方式
  * @method  setPageSize(int $value) 每页条数，默认为20
- * @method  setType(int $value) 输出的端口类型：0.全部（默认），1.PC，2.无线
- * @method  setChannelID(int $value) 阿里妈妈上申请的渠道id
+ * @method  setTopicId(int $value) 专辑id，通过精选专辑API获取的活动id
  */
-class TbTopicListReq extends Request
+class GoodsListReq extends Request
 {
     public $affiliation = 'original';
 
-    protected $address = "category/get-tb-topic-list";
+    protected $address = "topic/goods-list";
 
-    protected $version = 'v1.2.0';
+    protected $version = 'v1.2.2';
 
-    protected $checkParams = ['pageId'];
+    protected $checkParams = ['pageId', 'topicId'];
 
     protected $cacheTime = 60;
 
