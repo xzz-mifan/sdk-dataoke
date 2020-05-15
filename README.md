@@ -14,7 +14,7 @@ An excellent SDK for API calls of Dataoke
 > Composer
 
 ```
-composer https://github.com/xzz-mifan/sdk-dataoke.git
+composer require xzz-mifan/dataoke
 ```
 
 > GIT
