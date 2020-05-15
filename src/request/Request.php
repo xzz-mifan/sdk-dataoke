@@ -7,20 +7,33 @@ use DTK\extend\Config;
 
 class Request
 {
-    /* 请求地址 */
+    /**
+     * 请求地址
+     * @var string
+     */
     protected $address;
 
-    /* 需要检测的必填字段 */
+    /**
+     * 需要检测的必填字段
+     * @var array
+     */
     protected $checkParams = [];
 
     protected $version = 'v1.2.2';
 
     private $error = '';
 
-    /* 缓存时间 (秒)*/
+    /**
+     * 缓存时间 (秒)
+     * @var int
+     */
     protected $cacheTime = null;
 
-    public $affiliation = 'save';
+    /**
+     * 归属
+     * @var string
+     */
+    public $affiliation;
 
     /**
      * 获取当前API版本

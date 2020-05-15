@@ -32,12 +32,13 @@ use DTK\request\Request;
  */
 class GoodsListReq extends Request
 {
+    public $affiliation = 'save';
+
     protected $address = "goods/get-goods-list";
 
     protected $checkParams = ['pageId'];
 
     protected $cacheTime = 3600;
-
 
     public function __call($name, $arguments)
     {

@@ -3,14 +3,14 @@
 namespace DTK\client;
 
 use DTK\Client;
-use DTK\request\Request;
+use DTK\request\save\GoodsListReq;
 
 /**
  * 入库更新API
  * Class Save
  * @package DTK\client
  *
- * @method Save getGoodsList(Request $request) 商品列表
+ * @method Save getGoodsList(GoodsListReq $request) 商品列表
  */
 class Save extends Client
 {

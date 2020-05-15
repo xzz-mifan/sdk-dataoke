@@ -8,13 +8,14 @@ use DTK\extend\Config;
 use DTK\extend\Error;
 use DTK\extend\Http;
 use DTK\request\Request;
+use DTK\request\save\GoodsListReq;
 
 /**
  * 请求客户端
  * Class Client
  * @package DTK
  *
- * @method Save getGoodsList(Request $request) 商品列表
+ * @method Save getGoodsList(GoodsListReq $request) 入库更新API->商品列表
  */
 class Client
 {
@@ -50,20 +51,15 @@ class Client
         return new $class_name($appKey, $appSecret);
     }
 
-    /**
-     * @param $name
-     * @param $arguments
-     * @return self
-     */
+
     public function __call($name, $arguments)
     {
-
         $class_name_array = explode("\\", __CLASS__);
         $class_name       = strtolower($class_name_array[1]);
-        $class_name       = __NAMESPACE__ . "\\" . $class_name . "\\" . $arguments[0]->affiliation;
-        $class            = new $class_name($arguments);
-        return call_user_method($name,$class);
-        return new $class_name($arguments);
+        if (!isset($arguments[0]->affiliation) || !$arguments[0]->affiliation) throw new \Exception('affiliation未设置');
+        $class_name = __NAMESPACE__ . "\\" . $class_name . "\\" . $arguments[0]->affiliation;
+        $class      = new $class_name();
+        return $class->{$name}($arguments[0]);
     }
 
     protected function run(Request $request)
