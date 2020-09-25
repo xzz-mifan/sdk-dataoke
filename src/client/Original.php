@@ -11,6 +11,7 @@ use DTK\request\original\CatalogueReq;
 use DTK\request\original\DdqGoodsListReq;
 use DTK\request\original\GoodsListReq;
 use DTK\request\original\ListSimilerGoodsByOpenReq;
+use DTK\request\original\LiveMaterialGoodsListReq;
 use DTK\request\original\OpGoodsListReq;
 use DTK\request\original\RankingListReq;
 use DTK\request\original\TbTopicListReq;
@@ -30,6 +31,7 @@ use DTK\request\original\TbTopicListReq;
  * @method Original listSimilerGoodsByOpen(ListSimilerGoodsByOpenReq $request) 猜你喜欢
  * @method Original activityGoodsList(ActivityGoodsListReq $request) 活动商品
  * @method Original activityCatalogue(ActivityGoodsListReq $request) 热门活动
+ * @method Original liveMaterialGoodsList(LiveMaterialGoodsListReq $request) 直播好货
  */
 class Original extends Client
 {
