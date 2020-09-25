@@ -10,7 +10,7 @@ use DTK\request\Request;
  * Class GoodsListReq
  * @package DTK\request\original
  *
- * @method  setPageId(String $value) 分页id，支持传统的页码分页方式
+ * @method  setPageId(string $value) 分页id，支持传统的页码分页方式
  * @method  setPageSize(int $value) 每页条数，默认为20
  * @method  setTopicId(int $value) 专辑id，通过精选专辑API获取的活动id
  */

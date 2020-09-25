@@ -149,4 +149,10 @@ class Request
         $this->cacheTime = $cacheTime;
         return $this;
     }
+
+    public function __call($name, $arguments)
+    {
+        $this->params[$name] = $arguments[0];
+        return $this;
+    }
 }

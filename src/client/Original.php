@@ -9,6 +9,9 @@ use DTK\request\original\ActivityGoodsListReq;
 use DTK\request\original\BrandListReq;
 use DTK\request\original\CatalogueReq;
 use DTK\request\original\DdqGoodsListReq;
+use DTK\request\original\ExclusiveGoodsListReq;
+use DTK\request\original\ExplosiveGoodsListReq;
+use DTK\request\original\FriendsCircleListReq;
 use DTK\request\original\GoodsListReq;
 use DTK\request\original\ListSimilerGoodsByOpenReq;
 use DTK\request\original\LiveMaterialGoodsListReq;
@@ -32,6 +35,9 @@ use DTK\request\original\TbTopicListReq;
  * @method Original activityGoodsList(ActivityGoodsListReq $request) 活动商品
  * @method Original activityCatalogue(ActivityGoodsListReq $request) 热门活动
  * @method Original liveMaterialGoodsList(LiveMaterialGoodsListReq $request) 直播好货
+ * @method Original explosiveGoodsList (ExplosiveGoodsListReq $request) 每日爆品推荐
+ * @method Original exclusiveGoodsList (ExclusiveGoodsListReq $request) 大淘客独家券商品
+ * @method Original friendsCircleList (FriendsCircleListReq $request) 朋友圈文案
  */
 class Original extends Client
 {
