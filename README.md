@@ -9,11 +9,6 @@ The fast and elegant Dataoke SDK has never been so unbeatable
 
 An excellent SDK for API calls of Dataoke
 
-![avatar](https://raw.githubusercontent.com/xzz-mifan/sdk-dataoke/master/img/1.png)
-
-![avatar](https://raw.githubusercontent.com/xzz-mifan/sdk-dataoke/master/img/2.png)
-
-![avatar](https://raw.githubusercontent.com/xzz-mifan/sdk-dataoke/master/img/3.png)
 
 ### 下载 of 安装
 
