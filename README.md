@@ -2,13 +2,10 @@
 
 ### 简介
 快速优雅的大淘客SDK,从未如此无与伦比
-
-The fast and elegant Dataoke SDK has never been so unbeatable
-
 一个用于大淘客API调用的优秀SDK
 
+The fast and elegant Dataoke SDK has never been so unbeatable
 An excellent SDK for API calls of Dataoke
-
 
 ### 下载 of 安装
 
