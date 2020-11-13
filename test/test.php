@@ -39,8 +39,8 @@ $suggestionReq->setKeyWords('洗衣');
 $suggestionReq->setType(1);
 
 // 第一种
-//$result = \DTK\client\Search::static()->getSuggestion($suggestionReq);
-//var_dump($result);
+// $result = \DTK\client\Search::static()->getSuggestion($suggestionReq);
+// var_dump($result);
 
 // 第二种
 //$result = $client->getSuggestion($suggestionReq);
@@ -49,11 +49,17 @@ $suggestionReq->setType(1);
 /* 特色栏目API-官方活动推广 */
 $tbTopicListReq = new TbTopicListReq();
 $tbTopicListReq->setPageId(1);
+$tbTopicListReq->setPageId(1);
 
 // 第一种
-//$result         = \DTK\client\Original::static()->getTbTopicList($tbTopicListReq);
-//var_dump($result);
+// $result         = \DTK\client\Original::static()->getTbTopicList($tbTopicListReq);
+// var_dump($result);
 
 // 第二种
 //$result = $client->getTbTopicList($tbTopicListReq);
 //var_dump($result);
+
+// $tbTopicListReq = new ParseContentReq();
+// $tbTopicListReq->setContent('https://detail.tmall.com/item.htm?id=617315434377');
+// $result = $client->parseContent($tbTopicListReq);
+// var_dump($result);

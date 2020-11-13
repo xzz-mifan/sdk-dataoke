@@ -33,9 +33,5 @@ class TbServiceReq extends Request
 
     protected $cacheTime = 360;
 
-    public function __call($name, $arguments)
-    {
-        $this->params[$name] = $arguments[0];
-        return $this;
-    }
+
 }

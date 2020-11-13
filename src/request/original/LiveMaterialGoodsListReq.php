@@ -22,9 +22,5 @@ class LiveMaterialGoodsListReq extends Request
 
     protected $cacheTime = 60;
 
-    public function __call($name, $arguments)
-    {
-        $this->params[$name] = $arguments[0];
-        return $this;
-    }
+
 }

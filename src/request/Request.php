@@ -150,9 +150,15 @@ class Request
         return $this;
     }
 
+    /**
+     * @param $name
+     * @param $arguments
+     * @return $this
+     */
     public function __call($name, $arguments)
     {
         $this->params[$name] = $arguments[0];
         return $this;
     }
+
 }

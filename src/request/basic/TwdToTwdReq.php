@@ -31,10 +31,4 @@ class TwdToTwdReq extends Request
     protected $checkParams = ['content'];
 
     protected $cacheTime = 60;
-
-    public function __call($name, $arguments)
-    {
-        $this->params[$name] = $arguments[0];
-        return $this;
-    }
 }

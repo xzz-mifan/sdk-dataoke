@@ -23,10 +23,4 @@ class SuggestionReq extends Request
     protected $checkParams = ['keyWords', 'type'];
 
     protected $cacheTime = 360;
-
-    public function __call($name, $arguments)
-    {
-        $this->params[$name] = $arguments[0];
-        return $this;
-    }
 }

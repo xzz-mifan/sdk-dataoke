@@ -20,10 +20,4 @@ class SuperCategoryReq extends Request
     protected $checkParams = [];
 
     protected $cacheTime = 60;
-
-    public function __call($name, $arguments)
-    {
-        $this->params[$name] = $arguments[0];
-        return $this;
-    }
 }
